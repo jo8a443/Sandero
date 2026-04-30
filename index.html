@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SANDERO LIT 443 - Pro</title>
     
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/744/744465.png">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/744/744465.png">
+    
     <style>
         :root {
             --azul-oscuro: #002d5a;
@@ -39,11 +42,9 @@
         .btn-secundario { background-color: #6b7280; color: white; border: none; padding: 14px; width: 100%; border-radius: 12px; font-weight: bold; font-size: 0.8rem; }
         .btn-excel { background-color: var(--verde-exito); }
 
-        /* SECCIÓN DE AUTOR Y SOPORTE */
         .footer-autor { margin-top: 30px; text-align: center; padding: 25px; border-top: 1px solid #ddd; background: #fff; border-radius: 20px 20px 0 0; }
         .footer-autor p { margin: 0; color: #666; font-size: 0.9rem; margin-bottom: 10px; }
         .btn-whatsapp { display: inline-flex; align-items: center; justify-content: center; background: #25d366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(37,211,102,0.3); transition: 0.3s; }
-        .btn-whatsapp:active { transform: scale(0.95); }
     </style>
 </head>
 <body>
@@ -144,7 +145,6 @@
 
     <script>
         const KEY = 'DB_SANDERO_FINAL_V1';
-
         document.addEventListener("DOMContentLoaded", () => dibujar());
 
         function guardar() {
@@ -160,16 +160,13 @@
                 km: document.getElementById('km').value || "0",
                 prox: document.getElementById('prox').value || "0"
             };
-
             if(!i.fecha || !i.precio) return alert("Completa Fecha y Precio");
-
             let h = JSON.parse(localStorage.getItem(KEY)) || [];
             h.push(i);
             localStorage.setItem(KEY, JSON.stringify(h));
-            
             ['marca', 'lugar', 'detalle', 'precio', 'km', 'prox'].forEach(id => document.getElementById(id).value = "");
             dibujar();
-            alert("✅ Registro Guardado Correctamente");
+            alert("✅ Registro Guardado");
         }
 
         function dibujar() {
@@ -178,7 +175,6 @@
             tbody.innerHTML = "";
             let total = 0;
             h.sort((a,b) => new Date(b.fecha) - new Date(a.fecha));
-
             h.forEach(i => {
                 total += Number(i.precio);
                 const fila = tbody.insertRow();
@@ -186,17 +182,17 @@
                     <td><b>${i.fecha}</b><br>${i.servicio}</td>
                     <td><b>${i.marca}</b><br><small>${i.lugar}</small></td>
                     <td><b style="color:var(--verde-exito)">$${Number(i.precio).toLocaleString()}</b><br><span class="pago-tag">${i.metodo}</span></td>
-                    <td style="color:var(--azul-oscuro)"><b>${Number(i.km).toLocaleString()}</b></td>
-                    <td style="color:#d32f2f"><b>${Number(i.prox).toLocaleString()}</b></td>
-                    <td><button onclick="borrar(${i.id})" style="background:#fee2e2; color:#b91c1c; border:none; padding:8px; border-radius:8px;">X</button></td>
+                    <td><b>${Number(i.km).toLocaleString()}</b></td>
+                    <td><b>${Number(i.prox).toLocaleString()}</b></td>
+                    <td><button onclick="borrar(${i.id})" style="background:#fee2e2; border:none; padding:5px; border-radius:5px;">X</button></td>
                 `;
             });
             document.getElementById('totalGastado').innerText = "$ " + total.toLocaleString();
-            document.getElementById('totalRegistros').innerText = h.length + " Mantenimientos Registrados";
+            document.getElementById('totalRegistros').innerText = h.length + " Mantenimientos";
         }
 
         function borrar(id) {
-            if(confirm("¿Eliminar este registro permanentemente?")) {
+            if(confirm("¿Eliminar?")) {
                 let h = JSON.parse(localStorage.getItem(KEY)) || [];
                 h = h.filter(x => x.id !== id);
                 localStorage.setItem(KEY, JSON.stringify(h));
@@ -212,7 +208,6 @@
 
         function exportar() {
             const h = JSON.parse(localStorage.getItem(KEY)) || [];
-            if(h.length === 0) return alert("No hay datos para exportar");
             let csv = "sep=;\nFecha;Servicio;Marca;Lugar;Detalle;Precio;Metodo;KM_Actual;KM_Prox\n";
             h.forEach(i => csv += `${i.fecha};${i.servicio};${i.marca};${i.lugar};${i.detalle};${i.precio};${i.metodo};${i.km};${i.prox}\n`);
             const blob = new Blob(["\ufeff", csv], { type: 'text/csv;charset=utf-8;' });
@@ -229,13 +224,11 @@
                 let historial = [];
                 lines.forEach(line => {
                     const d = line.split(';');
-                    if(d.length > 5) {
-                        historial.push({ id: Date.now() + Math.random(), fecha: d[0], servicio: d[1], marca: d[2], lugar: d[3], detalle: d[4], precio: d[5], metodo: d[6], km: d[7], prox: d[8] });
-                    }
+                    if(d.length > 5) historial.push({ id: Date.now()+Math.random(), fecha: d[0], servicio: d[1], marca: d[2], lugar: d[3], detalle: d[4], precio: d[5], metodo: d[6], km: d[7], prox: d[8] });
                 });
                 localStorage.setItem(KEY, JSON.stringify(historial));
                 dibujar();
-                alert("✅ Datos Importados con Éxito");
+                alert("✅ Importado");
             };
             reader.readAsText(input.files[0]);
         }
