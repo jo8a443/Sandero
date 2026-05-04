@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SANDERO GOLD - Gestión & Crecimiento Co.</title>
+    <title>SANDERO MASTER - LIT-443 - Gold Edition G&C</title>
     
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3202/3202926.png">
+    <link rel="icon" href="https://img.icons8.com/fluency/96/car.png" type="image/png">
     
     <style>
         :root {
-            --negro-profundo: #05070a;
-            --azul-cobalto: #3b82f6;
-            --plateado: #94a3b8;
-            --gris-card: #0f172a;
-            --texto: #f8fafc;
-            --verde-exito: #10b981;
+            --negro-profundo: #05070a; /* Fondo modo oscuro total */
+            --azul-cobalto: #3b82f6; /* Acentos y acciones */
+            --plateado: #94a3b8; /* Texto secundario y etiquetas */
+            --gris-card: #0f172a; /* Fondo de tarjetas y contenedores */
+            --texto-principal: #f8fafc; /* Texto principal brillante */
+            --verde-exito: #10b981; /* Valores positivos y confirmaciones */
+            --rojo-eliminar: #ef4444; /* Botones de borrar */
         }
 
         body { 
-            font-family: 'Segoe UI', Roboto, sans-serif; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
             background-color: var(--negro-profundo); 
-            padding: 15px; margin: 0; color: var(--texto); 
+            padding: 15px; margin: 0; color: var(--texto-principal); 
         }
 
         .header { 
@@ -31,7 +32,7 @@
         }
 
         .resumen-container { 
-            display: grid; grid-template-columns: 1fr; gap: 15px; margin: 20px 0;
+            display: grid; grid-template-columns: 1fr; gap: 15px; margin: 25px 0;
         }
 
         .resumen-card { 
@@ -39,55 +40,57 @@
             text-align: center; border: 1px solid #1e293b;
             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
-        .resumen-card h2 { margin: 10px 0; font-size: 2.2rem; color: var(--azul-cobalto); text-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
+        .resumen-card h2 { margin: 10px 0; font-size: 2.3rem; color: var(--azul-cobalto); text-shadow: 0 0 12px rgba(59, 130, 246, 0.5); font-weight: 800; }
 
         .card { 
-            background: var(--gris-card); padding: 22px; border-radius: 24px; 
+            background: var(--gris-card); padding: 25px; border-radius: 24px; 
             border: 1px solid #1e293b; margin-bottom: 25px; 
         }
-        label { display: block; margin-top: 15px; font-weight: 600; color: var(--plateado); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        label { display: block; margin-top: 15px; font-weight: 600; color: var(--plateado); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.2px; }
         
         input, select { 
-            width: 100%; padding: 14px; margin-top: 8px; border-radius: 12px; 
+            width: 100%; padding: 15px; margin-top: 8px; border-radius: 12px; 
             border: 1px solid #1e293b; box-sizing: border-box; font-size: 16px; 
             background: #020617; color: white; outline: none; transition: 0.3s;
         }
-        input:focus { border-color: var(--azul-cobalto); box-shadow: 0 0 8px rgba(59, 130, 246, 0.3); }
+        input:focus, select:focus { border-color: var(--azul-cobalto); box-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
 
         #btnGuardar { 
             background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%); 
             color: white; border: none; 
-            padding: 20px; width: 100%; border-radius: 18px; 
-            font-weight: 800; margin-top: 30px; font-size: 1.1rem; 
-            text-transform: uppercase; cursor: pointer; letter-spacing: 1px;
+            padding: 22px; width: 100%; border-radius: 18px; 
+            font-weight: 800; margin-top: 35px; font-size: 1.15rem; 
+            text-transform: uppercase; cursor: pointer; letter-spacing: 1.5px;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
         }
 
-        #buscador { width:100%; border: 1px solid #1e293b; background: #020617; padding: 15px; border-radius: 15px; color: white; margin-bottom: 20px; box-sizing: border-box; }
+        #buscador { width:100%; border: 1px solid #1e293b; background: #020617; padding: 16px; border-radius: 15px; color: white; margin-bottom: 25px; box-sizing: border-box; }
 
         .contenedor-tabla { overflow-x: auto; background: var(--gris-card); border-radius: 20px; border: 1px solid #1e293b; }
-        table { width: 100%; border-collapse: collapse; min-width: 1100px; }
-        th { background: #1e293b; color: var(--azul-cobalto); padding: 18px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 2px solid #0f172a; }
-        td { border-bottom: 1px solid #1e293b; padding: 16px; font-size: 0.85rem; text-align: center; color: var(--plateado); }
+        table { width: 100%; border-collapse: collapse; min-width: 1200px; }
+        th { background: #1e293b; color: var(--azul-cobalto); padding: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 2px solid #0f172a; text-align: center; }
+        td { border-bottom: 1px solid #1e293b; padding: 18px; font-size: 0.9rem; text-align: center; color: var(--plateado); }
 
-        .pago-tag { font-size: 0.65rem; background: #1e293b; padding: 5px 10px; border-radius: 8px; color: var(--azul-cobalto); font-weight: bold; }
+        .pago-tag { font-size: 0.65rem; background: #1e293b; padding: 6px 12px; border-radius: 8px; color: var(--azul-cobalto); font-weight: bold; }
 
-        .botones-footer { display: flex; gap: 12px; margin-top: 25px; }
-        .btn-footer { background: #1e293b; color: white; border: none; padding: 18px; width: 100%; border-radius: 15px; font-weight: bold; font-size: 0.85rem; cursor: pointer; }
+        .botones-footer { display: flex; gap: 15px; margin-top: 30px; }
+        .btn-footer { background: #1e293b; color: white; border: none; padding: 20px; width: 100%; border-radius: 15px; font-weight: bold; font-size: 0.9rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;}
         .btn-excel { background: var(--verde-exito); }
 
+        /* FOOTER DE LA EMPRESA UNIFICADO EN MODO OSCURO */
         .footer-empresa { 
-            margin-top: 50px; background: white; padding: 40px 20px; 
-            border-radius: 40px 40px 0 0; text-align: center; color: #111827;
+            margin-top: 60px; background-color: var(--gris-card); padding: 50px 25px; 
+            border-radius: 30px 30px 0 0; text-align: center; border-top: 1px solid #1e293b;
         }
-        .logo-text { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; }
-        .logo-text span.blue { color: #2563eb; }
-        .logo-text span.gray { color: #6b7280; }
-        .eslogan { font-size: 0.8rem; color: #4b5563; font-style: italic; margin-top: 2px; }
+        .logo-text { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; }
+        .logo-text span.white { color: #ffffff; }
+        .logo-text span.blue { color: var(--azul-cobalto); }
+        .eslogan { font-size: 0.85rem; color: var(--plateado); font-style: italic; margin-top: 4px; }
         
         .btn-soporte { 
             display: inline-flex; align-items: center; justify-content: center; 
-            background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; 
-            text-decoration: none; font-weight: 700; margin-top: 20px; font-size: 0.95rem;
+            background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; 
+            text-decoration: none; font-weight: 700; margin-top: 25px; font-size: 1rem;
             box-shadow: 0 4px 15px rgba(37,211,102,0.3);
         }
     </style>
@@ -95,15 +98,16 @@
 <body>
 
     <div class="header">
-        <h1 style="margin:0; font-size: 1.5rem; letter-spacing: 4px; font-weight: 800;">SANDERO <span style="color:var(--azul-cobalto)">GOLD</span></h1>
-        <div style="color: var(--plateado); font-size: 0.9rem; margin-top: 5px;">Bitácora de Alto Rendimiento</div>
+        <h1 style="margin:0; font-size: 1.6rem; letter-spacing: 4px; font-weight: 800;">SANDERO <span style="color:var(--azul-cobalto)">GOLD</span></h1>
+        <div style="color: var(--azul-cobalto); font-size: 1.2rem; font-weight: bold; margin-top: 8px; letter-spacing: 2px;">LIT-443</div>
+        <div style="color: var(--plateado); font-size: 0.9rem; margin-top: 5px;">Sistema Maestro de Auditoría Técnica</div>
     </div>
 
     <div class="resumen-container">
         <div class="resumen-card">
-            <p style="color: var(--plateado); margin:0; font-size: 0.8rem; text-transform: uppercase;">Inversión Total en Gestión</p>
+            <p style="color: var(--plateado); margin:0; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Inversión Total en el Activo</p>
             <h2 id="totalGastado">$ 0</h2>
-            <p id="totalRegistros" style="color:var(--azul-cobalto); margin:0; font-size:0.85rem; font-weight:bold;">0 Servicios Profesionales</p>
+            <p id="totalRegistros" style="color:var(--azul-cobalto); margin:0; font-size:0.9rem; font-weight:bold;">0 Servicios Profesionales Registrados</p>
         </div>
     </div>
 
@@ -111,50 +115,51 @@
         <label>Fecha del Registro</label>
         <input type="date" id="fecha">
         
-        <label>Categoría de Mantenimiento</label>
+        <label>Categoría de Mantenimiento / Servicio</label>
         <select id="servicio">
             <option value="Mantenimiento Preventivo">Mantenimiento Preventivo</option>
-            <option value="Lubricantes / Aceite">Lubricantes / Aceite</option>
-            <option value="Frenos / Seguridad">Frenos / Seguridad</option>
-            <option value="Llantas / Suspensión">Llantas / Suspensión</option>
-            <option value="Sincronización / Motor">Sincronización / Motor</option>
-            <option value="Documentación / SOAT">Documentación / SOAT</option>
-            <option value="Mejoras / Estética">Mejoras / Estética</option>
-            <option value="Otro">Otro servicio técnico</option>
+            <option value="Lubricantes / Aceite Motor">Lubricantes / Aceite Motor</option>
+            <option value="Frenos / Sistema Seguridad">Frenos / Sistema Seguridad</option>
+            <option value="Llantas / Alineación / Balanceo">Llantas / Alineación / Balanceo</option>
+            <option value="Sincronización / Electrónica">Sincronización / Electrónica</option>
+            <option value="Batería / Sistema Eléctrico">Batería / Sistema Eléctrico</option>
+            <option value="Documentación / SOAT / Seguros">Documentación / SOAT / Seguros</option>
+            <option value="Mejoras / Estética / Accesorios">Mejoras / Estética / Accesorios</option>
+            <option value="Otro">Otro servicio técnico especializado</option>
         </select>
 
-        <label>Marca del Repuesto / Insumo</label>
-        <input type="text" id="marca" placeholder="Ej: Motul, Bosch, Michelin...">
+        <label>Marca del Repuesto / Insumo Instalado</label>
+        <input type="text" id="marca" placeholder="Ej: Motul, Bosch, Michelin, Valeo...">
 
-        <label>Taller / Lugar de Intervención</label>
-        <input type="text" id="lugar" placeholder="Nombre del establecimiento">
+        <label>Taller / Lugar de la Intervención</label>
+        <input type="text" id="lugar" placeholder="Nombre del establecimiento técnico">
 
-        <label>Detalle Técnico Adicional</label>
-        <input type="text" id="detalle" placeholder="Observaciones de la reparación">
+        <label>Detalle Técnico / Observaciones Adicionales</label>
+        <input type="text" id="detalle" placeholder="Observaciones detalladas de la reparación">
 
         <label>Inversión Realizada ($)</label>
         <input type="number" id="precio" placeholder="0">
 
-        <label>Instrumento de Pago</label>
+        <label>Instrumento de Pago Utilizado</label>
         <select id="metodoPago">
             <option value="Efectivo">Efectivo</option>
             <option value="Nequi">Nequi</option>
             <option value="Daviplata">Daviplata</option>
-            <option value="Tarjeta Crédito">Tarjeta Crédito</option>
-            <option value="Tarjeta Débito">Tarjeta Débito</option>
-            <option value="Transferencia">Transferencia</option>
+            <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+            <option value="Tarjeta de Débito">Tarjeta de Débito</option>
+            <option value="Transferencia Bancaria">Transferencia Bancaria</option>
         </select>
 
-        <label>Kilometraje Actual</label>
-        <input type="number" id="km" placeholder="KM hoy">
+        <label>Kilometraje Actual del Vehículo</label>
+        <input type="number" id="km" placeholder="KM al momento del servicio">
 
-        <label>Kilometraje Próximo Servicio</label>
-        <input type="number" id="prox" placeholder="KM proyectado">
+        <label>Kilometraje Sugerido Próximo Servicio</label>
+        <input type="number" id="prox" placeholder="KM proyectado para volver">
         
-        <button id="btnGuardar" onclick="guardar()">EJECUTAR REGISTRO MASTER</button>
+        <button id="btnGuardar" onclick="guardar()">EJECUTAR REGISTRO AUDITORÍA MASTER</button>
     </div>
 
-    <input type="text" id="buscador" onkeyup="filtrar()" placeholder="🔍 Filtrar auditoría por fecha, servicio o lugar...">
+    <input type="text" id="buscador" onkeyup="filtrar()" placeholder="🔍 Filtrar auditoría por fecha, servicio, marca o taller...">
 
     <div class="contenedor-tabla">
         <table id="tablaMain">
@@ -162,7 +167,7 @@
                 <tr>
                     <th>Fecha / Categoría</th>
                     <th>Marca / Lugar</th>
-                    <th>Observaciones</th>
+                    <th>Detalle Técnico</th>
                     <th>Inversión / Pago</th>
                     <th>KM Actual</th>
                     <th>KM Próximo</th>
@@ -174,14 +179,14 @@
     </div>
 
     <div class="botones-footer">
-        <button class="btn-footer btn-excel" onclick="exportar()">📊 DESCARGAR EXCEL</button>
-        <button class="btn-footer" onclick="document.getElementById('inputFile').click()">📥 IMPORTAR DATOS</button>
+        <button class="btn-footer btn-excel" onclick="exportar()">📊 DESCARGAR REPORTE EXCEL (BI)</button>
+        <button class="btn-footer" onclick="document.getElementById('inputFile').click()">📥 IMPORTAR BASE DE DATOS</button>
     </div>
     <input type="file" id="inputFile" style="display:none" onchange="importar(this)" accept=".csv">
 
     <div class="footer-empresa">
         <div class="logo-text">
-            <span class="blue">GESTIÓN &</span> <span class="gray">CRECIMIENTO CO.</span>
+            <span class="white">GESTIÓN &</span> <span class="blue">CRECIMIENTO CO.</span>
         </div>
         <div class="eslogan">De la estrategia a los resultados</div>
         <a href="https://wa.me/573150581701" class="btn-soporte" target="_blank">
@@ -192,7 +197,7 @@
     <div style="height: 30px;"></div>
 
     <script>
-        const KEY = 'DB_SANDERO_MASTER_GOLD'; 
+        const KEY = 'DB_SANDERO_MASTER_GOLD_V2'; 
 
         document.addEventListener("DOMContentLoaded", () => dibujar());
 
@@ -209,13 +214,13 @@
                 km: document.getElementById('km').value || "0",
                 prox: document.getElementById('prox').value || "0"
             };
-            if(!i.fecha || !i.precio) return alert("Error: Se requiere Fecha e Inversión");
+            if(!i.fecha || !i.precio) return alert("Error: Se requiere Fecha e Inversión para la auditoría.");
             let h = JSON.parse(localStorage.getItem(KEY)) || [];
             h.push(i);
             localStorage.setItem(KEY, JSON.stringify(h));
             ['marca', 'lugar', 'detalle', 'precio', 'km', 'prox'].forEach(id => document.getElementById(id).value = "");
             dibujar();
-            alert("✅ Registro de Auditoría Guardado");
+            alert("✅ Registro de Auditoría Técnica Guardado.");
         }
 
         function dibujar() {
@@ -234,15 +239,15 @@
                     <td><b style="color:var(--verde-exito)">$${Number(i.precio).toLocaleString()}</b><br><span class="pago-tag">${i.metodo}</span></td>
                     <td>${Number(i.km).toLocaleString()}</td>
                     <td style="color:var(--azul-cobalto); font-weight:bold">${Number(i.prox).toLocaleString()}</td>
-                    <td><button onclick="borrar(${i.id})" style="background:transparent; border:1px solid #333; color:#ef4444; border-radius:8px; padding:8px 12px; cursor:pointer">X</button></td>
+                    <td><button onclick="borrar(${i.id})" style="background:transparent; border:1px solid #333; color:var(--rojo-eliminar); border-radius:8px; padding:10px 14px; cursor:pointer; font-weight:bold;">X</button></td>
                 `;
             });
             document.getElementById('totalGastado').innerText = "$ " + total.toLocaleString();
-            document.getElementById('totalRegistros').innerText = h.length + " Servicios en Auditoría";
+            document.getElementById('totalRegistros').innerText = h.length + " Servicios Técnicos en Auditoría";
         }
 
         function borrar(id) {
-            if(confirm("¿Eliminar este registro técnico de la base de datos?")) {
+            if(confirm("¿Seguro que desea eliminar este registro técnico de la base de datos de auditoría?")) {
                 let h = JSON.parse(localStorage.getItem(KEY)) || [];
                 h = h.filter(x => x.id !== id);
                 localStorage.setItem(KEY, JSON.stringify(h));
@@ -258,13 +263,13 @@
 
         function exportar() {
             const h = JSON.parse(localStorage.getItem(KEY)) || [];
-            if(h.length === 0) return alert("No hay datos para exportar");
+            if(h.length === 0) return alert("No hay datos técnicos para exportar.");
             let csv = "sep=;\nFecha;Servicio;Marca;Lugar;Detalle;Precio;Metodo;KM_Actual;KM_Prox\n";
             h.forEach(i => csv += `${i.fecha};${i.servicio};${i.marca};${i.lugar};${i.detalle};${i.precio};${i.metodo};${i.km};${i.prox}\n`);
             const blob = new Blob(["\ufeff", csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
-            link.download = 'AUDITORIA_SANDERO_GOLD.csv';
+            link.download = 'AUDITORIA_SANDERO_LIT443_GOLD_GC.csv';
             link.click();
         }
 
@@ -287,8 +292,8 @@
                     });
                     localStorage.setItem(KEY, JSON.stringify(historial));
                     dibujar();
-                    alert("✅ Base de Datos Sincronizada");
-                } catch(e) { alert("Error en estructura de datos CSV."); }
+                    alert("✅ Base de Datos de Auditoría Sincronizada Correctamente.");
+                } catch(e) { alert("Error crítico en la estructura de datos del archivo CSV."); }
             };
             reader.readAsText(input.files[0]);
         }
