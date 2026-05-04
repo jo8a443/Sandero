@@ -3,124 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SANDERO LIT 443 - Pro</title>
+    <title>SANDERO GOLD - Gestión & Crecimiento Co.</title>
     
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/744/744465.png">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/744/744465.png">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3202/3202926.png">
     
     <style>
         :root {
-            --azul-oscuro: #002d5a;
-            --azul-brillante: #007bff;
-            --verde-exito: #166534;
-            --gris-fondo: #f4f7f9;
+            --negro-profundo: #05070a;
+            --azul-cobalto: #3b82f6;
+            --plateado: #94a3b8;
+            --gris-card: #0f172a;
+            --texto: #f8fafc;
+            --verde-exito: #10b981;
         }
 
-        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: var(--gris-fondo); padding: 10px; margin: 0; color: #333; }
-        .header { background: var(--azul-oscuro); color: white; padding: 15px; text-align: center; border-radius: 0 0 20px 20px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        
-        .resumen-card { background: #ffffff; color: var(--azul-oscuro); padding: 20px; border-radius: 15px; margin-bottom: 15px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-left: 8px solid var(--azul-brillante); }
-        .resumen-card h2 { margin: 5px 0; font-size: 1.8rem; color: var(--verde-exito); }
+        body { 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            background-color: var(--negro-profundo); 
+            padding: 15px; margin: 0; color: var(--texto); 
+        }
 
-        .card { background: white; padding: 15px; border-radius: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-top: 5px solid var(--azul-brillante); margin-bottom: 20px; }
-        label { display: block; margin-top: 12px; font-weight: bold; color: var(--azul-oscuro); font-size: 0.75rem; text-transform: uppercase; }
-        input, select { width: 100%; padding: 12px; margin-top: 5px; border-radius: 10px; border: 1px solid #d1d9e6; box-sizing: border-box; font-size: 16px; background: #fafafa; }
-        
-        #btnGuardar { background-color: var(--azul-brillante); color: white; border: none; padding: 16px; width: 100%; border-radius: 12px; font-weight: bold; margin-top: 20px; font-size: 1.1rem; }
-        
-        .search-container { margin: 15px 0; }
-        #buscador { width:100%; border: 2px solid var(--azul-brillante); background: #fff; padding: 12px; border-radius: 10px; box-sizing: border-box; }
+        .header { 
+            background: linear-gradient(180deg, #1e293b 0%, var(--negro-profundo) 100%); 
+            padding: 30px; text-align: center; border-radius: 0 0 30px 30px; 
+            border-bottom: 3px solid var(--azul-cobalto);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
 
-        .contenedor-tabla { overflow-x: auto; background: white; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        table { width: 100%; border-collapse: collapse; min-width: 850px; }
-        th { background: var(--azul-oscuro); color: white; padding: 15px; font-size: 0.7rem; text-transform: uppercase; }
-        td { border-bottom: 1px solid #eff2f5; padding: 12px; font-size: 0.85rem; text-align: center; }
+        .resumen-container { 
+            display: grid; grid-template-columns: 1fr; gap: 15px; margin: 20px 0;
+        }
+
+        .resumen-card { 
+            background: var(--gris-card); padding: 25px; border-radius: 20px; 
+            text-align: center; border: 1px solid #1e293b;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+        .resumen-card h2 { margin: 10px 0; font-size: 2.2rem; color: var(--azul-cobalto); text-shadow: 0 0 10px rgba(59, 130, 246, 0.4); }
+
+        .card { 
+            background: var(--gris-card); padding: 22px; border-radius: 24px; 
+            border: 1px solid #1e293b; margin-bottom: 25px; 
+        }
+        label { display: block; margin-top: 15px; font-weight: 600; color: var(--plateado); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
         
-        .pago-tag { font-size: 0.65rem; background: #eef2ff; padding: 4px 8px; border-radius: 6px; color: #4338ca; font-weight: bold; }
+        input, select { 
+            width: 100%; padding: 14px; margin-top: 8px; border-radius: 12px; 
+            border: 1px solid #1e293b; box-sizing: border-box; font-size: 16px; 
+            background: #020617; color: white; outline: none; transition: 0.3s;
+        }
+        input:focus { border-color: var(--azul-cobalto); box-shadow: 0 0 8px rgba(59, 130, 246, 0.3); }
 
-        .botones-finales { display: flex; gap: 10px; margin-top: 20px; }
-        .btn-secundario { background-color: #6b7280; color: white; border: none; padding: 14px; width: 100%; border-radius: 12px; font-weight: bold; font-size: 0.8rem; }
-        .btn-excel { background-color: var(--verde-exito); }
+        #btnGuardar { 
+            background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%); 
+            color: white; border: none; 
+            padding: 20px; width: 100%; border-radius: 18px; 
+            font-weight: 800; margin-top: 30px; font-size: 1.1rem; 
+            text-transform: uppercase; cursor: pointer; letter-spacing: 1px;
+        }
 
-        .footer-autor { margin-top: 30px; text-align: center; padding: 25px; border-top: 1px solid #ddd; background: #fff; border-radius: 20px 20px 0 0; }
-        .footer-autor p { margin: 0; color: #666; font-size: 0.9rem; margin-bottom: 10px; }
-        .btn-whatsapp { display: inline-flex; align-items: center; justify-content: center; background: #25d366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(37,211,102,0.3); transition: 0.3s; }
+        #buscador { width:100%; border: 1px solid #1e293b; background: #020617; padding: 15px; border-radius: 15px; color: white; margin-bottom: 20px; box-sizing: border-box; }
+
+        .contenedor-tabla { overflow-x: auto; background: var(--gris-card); border-radius: 20px; border: 1px solid #1e293b; }
+        table { width: 100%; border-collapse: collapse; min-width: 1100px; }
+        th { background: #1e293b; color: var(--azul-cobalto); padding: 18px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 2px solid #0f172a; }
+        td { border-bottom: 1px solid #1e293b; padding: 16px; font-size: 0.85rem; text-align: center; color: var(--plateado); }
+
+        .pago-tag { font-size: 0.65rem; background: #1e293b; padding: 5px 10px; border-radius: 8px; color: var(--azul-cobalto); font-weight: bold; }
+
+        .botones-footer { display: flex; gap: 12px; margin-top: 25px; }
+        .btn-footer { background: #1e293b; color: white; border: none; padding: 18px; width: 100%; border-radius: 15px; font-weight: bold; font-size: 0.85rem; cursor: pointer; }
+        .btn-excel { background: var(--verde-exito); }
+
+        .footer-empresa { 
+            margin-top: 50px; background: white; padding: 40px 20px; 
+            border-radius: 40px 40px 0 0; text-align: center; color: #111827;
+        }
+        .logo-text { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; }
+        .logo-text span.blue { color: #2563eb; }
+        .logo-text span.gray { color: #6b7280; }
+        .eslogan { font-size: 0.8rem; color: #4b5563; font-style: italic; margin-top: 2px; }
+        
+        .btn-soporte { 
+            display: inline-flex; align-items: center; justify-content: center; 
+            background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; 
+            text-decoration: none; font-weight: 700; margin-top: 20px; font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+        }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1 style="margin:0; font-size: 1.4rem; letter-spacing: 1px;">SANDERO LIT 443</h1>
-        <small style="opacity: 0.8;">MASTER CONTROL PRO</small>
+        <h1 style="margin:0; font-size: 1.5rem; letter-spacing: 4px; font-weight: 800;">SANDERO <span style="color:var(--azul-cobalto)">GOLD</span></h1>
+        <div style="color: var(--plateado); font-size: 0.9rem; margin-top: 5px;">Bitácora de Alto Rendimiento</div>
     </div>
 
-    <div class="resumen-card">
-        <p>Inversión Total Acumulada</p>
-        <h2 id="totalGastado">$ 0</h2>
-        <p id="totalRegistros" style="color:var(--azul-brillante)">0 Mantenimientos</p>
+    <div class="resumen-container">
+        <div class="resumen-card">
+            <p style="color: var(--plateado); margin:0; font-size: 0.8rem; text-transform: uppercase;">Inversión Total en Gestión</p>
+            <h2 id="totalGastado">$ 0</h2>
+            <p id="totalRegistros" style="color:var(--azul-cobalto); margin:0; font-size:0.85rem; font-weight:bold;">0 Servicios Profesionales</p>
+        </div>
     </div>
 
     <div class="card">
-        <label>Fecha</label>
+        <label>Fecha del Registro</label>
         <input type="date" id="fecha">
         
-        <label>Servicio</label>
+        <label>Categoría de Mantenimiento</label>
         <select id="servicio">
-            <option value="Cambio de aceite">Cambio de aceite</option>
-            <option value="Frenos">Frenos</option>
-            <option value="Alineación / Balanceo">Alineación / Balanceo</option>
-            <option value="Llantas">Llantas</option>
-            <option value="Sincronización">Sincronización</option>
-            <option value="Batería">Batería</option>
-            <option value="SOAT / Seguros">SOAT / Seguros</option>
-            <option value="Impuestos">Impuestos</option>
-            <option value="Otro">Otro servicio</option>
+            <option value="Mantenimiento Preventivo">Mantenimiento Preventivo</option>
+            <option value="Lubricantes / Aceite">Lubricantes / Aceite</option>
+            <option value="Frenos / Seguridad">Frenos / Seguridad</option>
+            <option value="Llantas / Suspensión">Llantas / Suspensión</option>
+            <option value="Sincronización / Motor">Sincronización / Motor</option>
+            <option value="Documentación / SOAT">Documentación / SOAT</option>
+            <option value="Mejoras / Estética">Mejoras / Estética</option>
+            <option value="Otro">Otro servicio técnico</option>
         </select>
 
-        <label>Marca Repuesto</label>
-        <input type="text" id="marca" placeholder="Ej: Elf, Bosch">
+        <label>Marca del Repuesto / Insumo</label>
+        <input type="text" id="marca" placeholder="Ej: Motul, Bosch, Michelin...">
 
-        <label>Lugar</label>
-        <input type="text" id="lugar" placeholder="Donde se realizó">
+        <label>Taller / Lugar de Intervención</label>
+        <input type="text" id="lugar" placeholder="Nombre del establecimiento">
 
-        <label>Detalle</label>
-        <input type="text" id="detalle" placeholder="Observaciones">
+        <label>Detalle Técnico Adicional</label>
+        <input type="text" id="detalle" placeholder="Observaciones de la reparación">
 
-        <label>Valor Pagado ($)</label>
+        <label>Inversión Realizada ($)</label>
         <input type="number" id="precio" placeholder="0">
 
-        <label>Método de Pago</label>
+        <label>Instrumento de Pago</label>
         <select id="metodoPago">
             <option value="Efectivo">Efectivo</option>
-            <option value="Tarjeta débito">Tarjeta débito</option>
-            <option value="Tarjeta crédito">Tarjeta crédito</option>
             <option value="Nequi">Nequi</option>
             <option value="Daviplata">Daviplata</option>
+            <option value="Tarjeta Crédito">Tarjeta Crédito</option>
+            <option value="Tarjeta Débito">Tarjeta Débito</option>
             <option value="Transferencia">Transferencia</option>
         </select>
 
         <label>Kilometraje Actual</label>
         <input type="number" id="km" placeholder="KM hoy">
 
-        <label>Kilometraje Próximo</label>
-        <input type="number" id="prox" placeholder="KM sugerido">
+        <label>Kilometraje Próximo Servicio</label>
+        <input type="number" id="prox" placeholder="KM proyectado">
         
-        <button id="btnGuardar" onclick="guardar()">GUARDAR REGISTRO</button>
+        <button id="btnGuardar" onclick="guardar()">EJECUTAR REGISTRO MASTER</button>
     </div>
 
-    <div class="search-container">
-        <input type="text" id="buscador" onkeyup="filtrar()" placeholder="🔍 Buscar servicio, pago o fecha...">
-    </div>
+    <input type="text" id="buscador" onkeyup="filtrar()" placeholder="🔍 Filtrar auditoría por fecha, servicio o lugar...">
 
     <div class="contenedor-tabla">
         <table id="tablaMain">
             <thead>
                 <tr>
-                    <th>Fecha / Servicio</th>
-                    <th>Detalle / Marca</th>
-                    <th>Precio / Pago</th>
+                    <th>Fecha / Categoría</th>
+                    <th>Marca / Lugar</th>
+                    <th>Observaciones</th>
+                    <th>Inversión / Pago</th>
                     <th>KM Actual</th>
-                    <th>Próximo KM</th>
+                    <th>KM Próximo</th>
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -128,23 +173,27 @@
         </table>
     </div>
 
-    <div class="botones-finales">
-        <button class="btn-secundario btn-excel" onclick="exportar()">📊 EXCEL</button>
-        <button class="btn-secundario" onclick="document.getElementById('inputFile').click()">📥 IMPORTAR</button>
+    <div class="botones-footer">
+        <button class="btn-footer btn-excel" onclick="exportar()">📊 DESCARGAR EXCEL</button>
+        <button class="btn-footer" onclick="document.getElementById('inputFile').click()">📥 IMPORTAR DATOS</button>
     </div>
     <input type="file" id="inputFile" style="display:none" onchange="importar(this)" accept=".csv">
 
-    <div class="footer-autor">
-        <p>Desarrollado por <strong>Jorge Ochoa</strong></p>
-        <a href="https://wa.me/573150581701" class="btn-whatsapp" target="_blank">
-            💬 Soporte Técnico WhatsApp
+    <div class="footer-empresa">
+        <div class="logo-text">
+            <span class="blue">GESTIÓN &</span> <span class="gray">CRECIMIENTO CO.</span>
+        </div>
+        <div class="eslogan">De la estrategia a los resultados</div>
+        <a href="https://wa.me/573150581701" class="btn-soporte" target="_blank">
+            💬 Soporte Consultoría Gold
         </a>
     </div>
 
-    <div style="height: 40px;"></div>
+    <div style="height: 30px;"></div>
 
     <script>
-        const KEY = 'DB_SANDERO_FINAL_V1';
+        const KEY = 'DB_SANDERO_MASTER_GOLD'; 
+
         document.addEventListener("DOMContentLoaded", () => dibujar());
 
         function guardar() {
@@ -160,13 +209,13 @@
                 km: document.getElementById('km').value || "0",
                 prox: document.getElementById('prox').value || "0"
             };
-            if(!i.fecha || !i.precio) return alert("Completa Fecha y Precio");
+            if(!i.fecha || !i.precio) return alert("Error: Se requiere Fecha e Inversión");
             let h = JSON.parse(localStorage.getItem(KEY)) || [];
             h.push(i);
             localStorage.setItem(KEY, JSON.stringify(h));
             ['marca', 'lugar', 'detalle', 'precio', 'km', 'prox'].forEach(id => document.getElementById(id).value = "");
             dibujar();
-            alert("✅ Registro Guardado");
+            alert("✅ Registro de Auditoría Guardado");
         }
 
         function dibujar() {
@@ -179,20 +228,21 @@
                 total += Number(i.precio);
                 const fila = tbody.insertRow();
                 fila.innerHTML = `
-                    <td><b>${i.fecha}</b><br>${i.servicio}</td>
+                    <td><b>${i.fecha}</b><br><span style="color:var(--azul-cobalto)">${i.servicio}</span></td>
                     <td><b>${i.marca}</b><br><small>${i.lugar}</small></td>
+                    <td><small>${i.detalle}</small></td>
                     <td><b style="color:var(--verde-exito)">$${Number(i.precio).toLocaleString()}</b><br><span class="pago-tag">${i.metodo}</span></td>
-                    <td><b>${Number(i.km).toLocaleString()}</b></td>
-                    <td><b>${Number(i.prox).toLocaleString()}</b></td>
-                    <td><button onclick="borrar(${i.id})" style="background:#fee2e2; border:none; padding:5px; border-radius:5px;">X</button></td>
+                    <td>${Number(i.km).toLocaleString()}</td>
+                    <td style="color:var(--azul-cobalto); font-weight:bold">${Number(i.prox).toLocaleString()}</td>
+                    <td><button onclick="borrar(${i.id})" style="background:transparent; border:1px solid #333; color:#ef4444; border-radius:8px; padding:8px 12px; cursor:pointer">X</button></td>
                 `;
             });
             document.getElementById('totalGastado').innerText = "$ " + total.toLocaleString();
-            document.getElementById('totalRegistros').innerText = h.length + " Mantenimientos";
+            document.getElementById('totalRegistros').innerText = h.length + " Servicios en Auditoría";
         }
 
         function borrar(id) {
-            if(confirm("¿Eliminar?")) {
+            if(confirm("¿Eliminar este registro técnico de la base de datos?")) {
                 let h = JSON.parse(localStorage.getItem(KEY)) || [];
                 h = h.filter(x => x.id !== id);
                 localStorage.setItem(KEY, JSON.stringify(h));
@@ -208,30 +258,48 @@
 
         function exportar() {
             const h = JSON.parse(localStorage.getItem(KEY)) || [];
+            if(h.length === 0) return alert("No hay datos para exportar");
             let csv = "sep=;\nFecha;Servicio;Marca;Lugar;Detalle;Precio;Metodo;KM_Actual;KM_Prox\n";
             h.forEach(i => csv += `${i.fecha};${i.servicio};${i.marca};${i.lugar};${i.detalle};${i.precio};${i.metodo};${i.km};${i.prox}\n`);
             const blob = new Blob(["\ufeff", csv], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
-            link.download = 'Mantenimiento_Sandero_JorgeOchoa.csv';
+            link.download = 'AUDITORIA_SANDERO_GOLD.csv';
             link.click();
         }
 
         function importar(input) {
             const reader = new FileReader();
             reader.onload = function() {
-                const lines = reader.result.split('\n').slice(2);
-                let historial = [];
-                lines.forEach(line => {
-                    const d = line.split(';');
-                    if(d.length > 5) historial.push({ id: Date.now()+Math.random(), fecha: d[0], servicio: d[1], marca: d[2], lugar: d[3], detalle: d[4], precio: d[5], metodo: d[6], km: d[7], prox: d[8] });
-                });
-                localStorage.setItem(KEY, JSON.stringify(historial));
-                dibujar();
-                alert("✅ Importado");
+                try {
+                    const lines = reader.result.split('\n').slice(2);
+                    let historial = [];
+                    lines.forEach(line => {
+                        const d = line.split(';');
+                        if(d.length >= 8) {
+                            historial.push({
+                                id: Date.now() + Math.random(),
+                                fecha: d[0], servicio: d[1], marca: d[2],
+                                lugar: d[3], detalle: d[4], precio: d[5],
+                                metodo: d[6], km: d[7], prox: d[8] || "0"
+                            });
+                        }
+                    });
+                    localStorage.setItem(KEY, JSON.stringify(historial));
+                    dibujar();
+                    alert("✅ Base de Datos Sincronizada");
+                } catch(e) { alert("Error en estructura de datos CSV."); }
             };
             reader.readAsText(input.files[0]);
         }
     </script>
 </body>
 </html>
+
+### 🔗 Tu Link para trabajar:
+Tu repositorio sigue siendo el mismo. El link directo para editar es:
+👉 **`https://github.com/jo8a443/sandero/edit/main/index.html`**
+
+*(Solo entra ahí, borra el código viejo y pega este nuevo código Gold).*
+
+**¿Qué te parece este salto de calidad?** He incluido hasta el detalle del logo inferior en blanco puro para que se vea como una factura o reporte de consultoría real. ¡Espero que te impacte tanto como el cuadro de finanzas!
